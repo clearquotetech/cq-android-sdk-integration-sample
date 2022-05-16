@@ -10,23 +10,37 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        // Starter code
-        CQSDKInitializer(this).initSDK(
-            // TODO Add the SDK key given by CQ
-            sdkKey = "2ddf63d4-b8be-4f1e-b9b9-17231558e7ce.cquat",
+        // Instantiate the CQSDKInitializer class
+        val cqSDKInitializer = CQSDKInitializer(this)
 
-            // TODO Add the Region here
-            region = UAT,
-            result = { initialized, code, message ->
-                if (code == 200){
-                    CQSDKInitializer(this).startInspection(
-                        activityContext = this,
-                        result = { started ->
-                        }
-                    )
+        // Check if SDK is initialized or not if not
+        if (cqSDKInitializer.isCQSDKInitialized()){
+            // Start the inspection flow
+            cqSDKInitializer.startInspection(
+                activityContext = this,
+                result = { started ->
+                    // Handle the response
                 }
-            }
-        )
-
+            )
+        }else{
+            // Initialize the SDK
+            cqSDKInitializer.initSDK(
+                // TODO Add the SDK key given by CQ
+                sdkKey = "<SDK Key>",
+                // TODO Add the Region here
+                region = UAT,
+                result = { initialized, code, message ->
+                    if (code == 200){
+                        // Start the inspection
+                        cqSDKInitializer.startInspection(
+                            activityContext = this,
+                            result = { started ->
+                                // Handle the response
+                            }
+                        )
+                    }
+                }
+            )
+        }
     }
 }
