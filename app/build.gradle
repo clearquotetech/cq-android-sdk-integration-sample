@@ -42,5 +42,5 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 
     // CQ SDK
-    implementation 'com.github.clearquotetech:cq-android-sdk:1.0.0-beta.3'
+    implementation 'com.github.clearquotetech:cq-android-sdk:1.0.0-beta.4'
 }

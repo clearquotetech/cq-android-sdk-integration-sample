@@ -3,6 +3,7 @@ package io.clearquote.assessment.cq_android_sdk_integration_sample
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import io.clearquote.assessment.cq_sdk.CQSDKInitializer
+import io.clearquote.assessment.cq_sdk.support.Constants.EU_Region
 import io.clearquote.assessment.cq_sdk.support.Constants.UAT
 
 class MainActivity : AppCompatActivity() {
@@ -26,7 +27,7 @@ class MainActivity : AppCompatActivity() {
             // Initialize the SDK
             cqSDKInitializer.initSDK(
                 // TODO Add the SDK key given by CQ
-                sdkKey = "<SDK Key>",
+                token = "<SDK Key>",
                 // TODO Add the Region here
                 region = UAT,
                 result = { initialized, code, message ->
